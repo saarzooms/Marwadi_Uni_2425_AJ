@@ -26,7 +26,7 @@ public class Dashboard extends HttpServlet {
         ServletConfig config = getServletConfig();
         String pageName = config.getInitParameter("pagename");
         ServletContext context = getServletContext();
-        String appName = config.getInitParameter("appname");
+        String appName = context.getInitParameter("appname");
         out.print(appName+"<br/>");
         out.print(pageName+"<br/>");
         Cookie[] cookies = req.getCookies();
