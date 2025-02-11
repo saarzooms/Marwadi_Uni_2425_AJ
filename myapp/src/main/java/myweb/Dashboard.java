@@ -33,6 +33,7 @@ public class Dashboard extends HttpServlet {
         }
         else{
             out.print("Welcome <b>"+userName+"</b>");
+            out.print("<a href='logout'>logout</a>");
         }
 
     }
