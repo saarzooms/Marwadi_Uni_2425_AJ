@@ -33,7 +33,7 @@ public class Login extends HttpServlet {
         String pwd = req.getParameter("txtPwd");
         if(unm.equals(pwd)){
             HttpSession session = req.getSession();
-            session.setAttribute("uname",unm);
+            session.setAttribute("unm",unm);
             resp.sendRedirect("dashboard");
         }else{
             out.print("Invalid credentials<br/>");

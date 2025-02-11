@@ -29,12 +29,16 @@ public class Dashboard extends HttpServlet {
 
         String userName = "";
         HttpSession session = req.getSession();
-        userName = (String)session.getAttribute("uname");
+        userName = (String)session.getAttribute("unm");
         if(userName.equals("")){
             resp.sendRedirect("login");
         }
         else{
             out.print("Welcome <b>"+userName+"</b>");
+            out.print("<br/>"+session.getId());
+            out.print("<br/>"+session.getCreationTime());
+            out.print("<br/>"+session.getLastAccessedTime());
+            out.print("<br/>"+session.getMaxInactiveInterval());
             out.print("<a href='logout'>logout</a>");
         }
 
