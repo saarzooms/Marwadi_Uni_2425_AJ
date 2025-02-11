@@ -14,9 +14,9 @@ public class ServletHTwo extends HttpServlet {
         PrintWriter out = resp.getWriter();
         resp.setContentType("text/html");
         String val = req.getParameter("txtVal");
+        out.print("<a href='servleththree?txtVal="+val+"'>click me</a>");
         out.print("<form action='servleththree'>");
         out.print("<input type='text' name='txtNewVal'/>");
-        out.print("<input type='hidden' name='txtVal' value='"+val+"'/>");
         out.print("<input type='submit' name='btnGo' value='Go'/>");
         out.print("</form>");
     }
