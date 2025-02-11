@@ -1,5 +1,7 @@
 package myweb;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,12 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
+        ServletConfig config = getServletConfig();
+        String pageName = config.getInitParameter("pagename");
+        ServletContext context = getServletContext();
+        String appName = config.getInitParameter("appname");
+        out.print(appName+"<br/>");
+        out.print(pageName+"<br/>");
         out.print("<form method='post'>");
         out.print("<input type='text' name='txtUname' placeholder='Enter your name'/><br/>");
         out.print("<input type='password' name='txtPwd' placeholder='Enter your password'/><br/>");

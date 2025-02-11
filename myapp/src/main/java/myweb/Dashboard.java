@@ -1,5 +1,7 @@
 package myweb;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +23,12 @@ public class Dashboard extends HttpServlet {
     void serve(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
+        ServletConfig config = getServletConfig();
+        String pageName = config.getInitParameter("pagename");
+        ServletContext context = getServletContext();
+        String appName = config.getInitParameter("appname");
+        out.print(appName+"<br/>");
+        out.print(pageName+"<br/>");
         Cookie[] cookies = req.getCookies();
         String userName = "";
         for(Cookie c:cookies){
