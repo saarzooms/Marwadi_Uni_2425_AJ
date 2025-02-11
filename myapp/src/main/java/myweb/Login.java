@@ -3,10 +3,7 @@ package myweb;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -35,8 +32,8 @@ public class Login extends HttpServlet {
         String unm = req.getParameter("txtUname");
         String pwd = req.getParameter("txtPwd");
         if(unm.equals(pwd)){
-            Cookie cookie = new Cookie("uname",unm);
-            resp.addCookie(cookie);
+            HttpSession session = req.getSession();
+            session.setAttribute("uname",unm);
             resp.sendRedirect("dashboard");
         }else{
             out.print("Invalid credentials<br/>");

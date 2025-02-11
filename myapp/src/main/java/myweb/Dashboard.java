@@ -3,10 +3,7 @@ package myweb;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -29,13 +26,10 @@ public class Dashboard extends HttpServlet {
         String appName = context.getInitParameter("appname");
         out.print(appName+"<br/>");
         out.print(pageName+"<br/>");
-        Cookie[] cookies = req.getCookies();
+
         String userName = "";
-        for(Cookie c:cookies){
-            if(c.getName().equals("uname")){
-                userName = c.getValue();
-            }
-        }
+        HttpSession session = req.getSession();
+        userName = (String)session.getAttribute("uname");
         if(userName.equals("")){
             resp.sendRedirect("login");
         }
